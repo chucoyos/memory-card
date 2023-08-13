@@ -6,22 +6,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Button, CssBaseline, Paper, Drawer } from '@mui/material'
 import { useState } from 'react'
 
-const lightTheme = createTheme({
-	palette: {
-		mode: 'light',
-	},
-})
-
-const darkTheme = createTheme({
-	palette: {
-		mode: 'dark',
-	},
-})
-
 function App() {
-	const [theme, setTheme] = useState(lightTheme)
+	const [customTheme, setCustomTheme] = useState(false)
+	const theme = createTheme({
+		palette: {
+			mode: customTheme ? 'dark' : 'light',
+		},
+	})
 	const toggleTheme = () => {
-		theme === lightTheme ? setTheme(darkTheme) : setTheme(lightTheme)
+		setCustomTheme(!customTheme)
 	}
 	return (
 		<>
