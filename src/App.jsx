@@ -6,10 +6,11 @@ import { CssBaseline, Drawer, Avatar, Typography } from '@mui/material'
 import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
 import DarkModeIconOutlined from '@mui/icons-material/DarkModeOutlined'
 import Apps from '@mui/icons-material/Apps'
+import MemoryCard from './MemoryCard'
 import { useState } from 'react'
 
 function App() {
-	const [customTheme, setCustomTheme] = useState(true)
+	const [customTheme, setCustomTheme] = useState(false)
 	const theme = createTheme({
 		palette: {
 			mode: customTheme ? 'dark' : 'light',
@@ -86,15 +87,32 @@ function App() {
 					</Drawer>
 
 					<Container
-						maxWidth='lg'
+						maxWidth='sm'
 						sx={{
 							display: 'flex',
-							flexDirection: 'column',
 							justifyContent: 'center',
 							alignItems: 'center',
+							gap: 2,
+							flexWrap: 'wrap',
+							auto: 'true',
+							padding: '64px',
+							backgroundColor: 'primary.main',
+
+							marginTop: '15vh',
 						}}
 					>
-						<Typography variant='h1'>Hello World</Typography>
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
+						<MemoryCard />
 					</Container>
 				</Container>
 			</ThemeProvider>
