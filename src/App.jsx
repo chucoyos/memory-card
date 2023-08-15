@@ -1,23 +1,22 @@
 import './App.css'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline, Drawer, Avatar, Typography } from '@mui/material'
 import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
 import DarkModeIconOutlined from '@mui/icons-material/DarkModeOutlined'
 import Apps from '@mui/icons-material/Apps'
 import MemoryCard from './MemoryCard'
 import { useState } from 'react'
+import { lightTheme, darkTheme } from './themes'
 
 function App() {
-	const [customTheme, setCustomTheme] = useState(false)
-	const theme = createTheme({
-		palette: {
-			mode: customTheme ? 'dark' : 'light',
-		},
-	})
+	const [dark, setDark] = useState(false)
+
+	const theme = dark ? darkTheme : lightTheme
 	const toggleTheme = () => {
-		setCustomTheme(!customTheme)
+		setDark(!dark)
+		console.log(theme.primary.main)
 	}
 	return (
 		<>
@@ -25,7 +24,6 @@ function App() {
 				<CssBaseline />
 				<Container>
 					<Drawer variant='permanent'>
-						{' '}
 						<Box
 							width={60}
 							sx={{
@@ -38,16 +36,16 @@ function App() {
 							}}
 						>
 							<Box onClick={toggleTheme}>
-								{customTheme ? (
+								{dark ? (
 									<Avatar
 										animation='true'
 										sx={{
-											backgroundColor: 'inherit',
-											color: 'inherit',
+											backgroundColor: theme.background.main,
 											border: '1px solid #fff',
+											color: theme.background.onBackground,
 											'&:hover': {
 												paddingBottom: '4px',
-												backgroundColor: 'grey.800',
+												backgroundColor: 'background.main',
 												rotate: '360deg',
 												transition: 'all 0.5s ease-in-out',
 											},
@@ -58,12 +56,12 @@ function App() {
 								) : (
 									<Avatar
 										sx={{
-											backgroundColor: 'inherit',
-											color: 'inherit',
+											backgroundColor: theme.background.main,
+											color: theme.background.onBackground,
 											border: '.1px solid #000',
 											'&:hover': {
 												paddingBottom: '4px',
-												backgroundColor: 'grey.200',
+												backgroundColor: 'surface.variant',
 												rotate: '360deg',
 												transition: 'all 0.5s ease-in-out',
 											},
@@ -88,6 +86,7 @@ function App() {
 
 					<Container
 						maxWidth='sm'
+						elevation={4}
 						sx={{
 							display: 'flex',
 							justifyContent: 'center',
@@ -96,8 +95,7 @@ function App() {
 							flexWrap: 'wrap',
 							auto: 'true',
 							padding: '64px',
-							backgroundColor: 'primary.main',
-
+							backgroundColor: theme.surface.main,
 							marginTop: '15vh',
 						}}
 					>

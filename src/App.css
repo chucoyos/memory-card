@@ -48,6 +48,3 @@
 	--on-surface: #e6e1e6;
 	--on-surface-variant: #cbc4cf;
 }
-body {
-	background-color: var(--surface);
-}
