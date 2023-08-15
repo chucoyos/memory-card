@@ -11,13 +11,12 @@ import { useState } from 'react'
 import { lightTheme, darkTheme } from './themes'
 
 function App() {
-	const [dark, setDark] = useState(false)
-
-	const theme = dark ? darkTheme : lightTheme
+	const [themeMode, setThemeMode] = useState(lightTheme)
 	const toggleTheme = () => {
-		setDark(!dark)
-		console.log(theme.primary.main)
+		setThemeMode(themeMode === lightTheme ? darkTheme : lightTheme)
 	}
+	const theme = themeMode
+
 	return (
 		<>
 			<ThemeProvider theme={theme}>
@@ -36,12 +35,12 @@ function App() {
 							}}
 						>
 							<Box onClick={toggleTheme}>
-								{dark ? (
+								{theme === lightTheme ? (
 									<Avatar
 										animation='true'
 										sx={{
 											backgroundColor: theme.background.main,
-											border: '1px solid #fff',
+											border: `1px solid ${theme.outline.main}`,
 											color: theme.background.onBackground,
 											'&:hover': {
 												paddingBottom: '4px',
@@ -58,7 +57,7 @@ function App() {
 										sx={{
 											backgroundColor: theme.background.main,
 											color: theme.background.onBackground,
-											border: '.1px solid #000',
+											border: `1px solid ${theme.outline.main}`,
 											'&:hover': {
 												paddingBottom: '4px',
 												backgroundColor: 'surface.variant',
@@ -99,18 +98,18 @@ function App() {
 							marginTop: '15vh',
 						}}
 					>
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
-						<MemoryCard />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
+						<MemoryCard theme={theme} />
 					</Container>
 				</Container>
 			</ThemeProvider>

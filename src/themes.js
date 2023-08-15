@@ -7,6 +7,12 @@ const lightTheme = createTheme({
 		main: '#6f43c0',
 		onPrimary: '#ffffff',
 	},
+	secondary: {
+		main: '#635b70',
+	},
+	tertiary: {
+		main: '#7e525d',
+	},
 	container: {
 		primary: '#ebddff',
 		secondary: '#e9def8',
@@ -14,6 +20,9 @@ const lightTheme = createTheme({
 	surface: {
 		main: '#fffbff',
 		variant: '#e7e0eb',
+	},
+	outline: {
+		main: '#7a757f',
 	},
 	background: {
 		main: '#fffbff',
@@ -29,6 +38,12 @@ const darkTheme = createTheme({
 		main: '#d3bbff',
 		onPrimary: '#3f008d',
 	},
+	secondary: {
+		main: '#cdc2db',
+	},
+	tertiary: {
+		main: '#f0b7c5',
+	},
 	container: {
 		primary: '#5727a7',
 		secondary: '#4b4358',
@@ -36,6 +51,9 @@ const darkTheme = createTheme({
 	surface: {
 		main: '#1d1b1e',
 		variant: '#49454e',
+	},
+	outline: {
+		main: '#948f99',
 	},
 	background: {
 		main: '#1d1b1e',

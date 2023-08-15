@@ -1,13 +1,12 @@
 import './App.css'
 import { Paper } from '@mui/material'
-import { lightTheme, darkTheme } from './themes'
 
-const MemoryCard = () => {
+const MemoryCard = ({ theme }) => {
 	return (
 		<Paper
 			elevation={1}
 			sx={{
-				backgroundColor: 'primary.main',
+				backgroundColor: theme.tertiary.main,
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
