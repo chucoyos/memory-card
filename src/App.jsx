@@ -78,7 +78,7 @@ function App() {
 								}}
 							>
 								<Apps />
-								<Typography variant='caption'>Apps</Typography>
+								<Typography variant='caption'>Games</Typography>
 							</Box>
 						</Box>
 					</Drawer>

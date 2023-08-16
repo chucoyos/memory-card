@@ -6,7 +6,7 @@ const MemoryCard = ({ theme }) => {
 		<Paper
 			elevation={1}
 			sx={{
-				backgroundColor: theme.tertiary.main,
+				backgroundColor: theme.outline.main,
 				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
