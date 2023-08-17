@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './App.css'
 import { Paper } from '@mui/material'
 

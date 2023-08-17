@@ -7,8 +7,9 @@ import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
 import DarkModeIconOutlined from '@mui/icons-material/DarkModeOutlined'
 import Apps from '@mui/icons-material/Apps'
 import MemoryCard from './MemoryCard'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { lightTheme, darkTheme } from './themes'
+import axios from 'axios'
 
 function App() {
 	const [themeMode, setThemeMode] = useState(lightTheme)
@@ -16,6 +17,30 @@ function App() {
 		setThemeMode(themeMode === lightTheme ? darkTheme : lightTheme)
 	}
 	const theme = themeMode
+
+	const [cards, setCards] = useState([{}])
+	useEffect(() => {
+		axios
+			.get('https://api.pokemontcg.io/v2/cards/dp3-1')
+			// .get('https://jsonplaceholder.typicode.com/posts/1')
+
+			.then((res) => {
+				setCards(res.data.data)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}, [])
+
+	useEffect(() => {
+		if (cards.images) {
+			console.log(cards.images.small)
+		}
+		// console.log(cards.data)
+	}, [cards])
+
+	// console.log(cards[0].images.small[0])
+	// console.log(cards.name)
 
 	return (
 		<>
@@ -78,6 +103,7 @@ function App() {
 								}}
 							>
 								<Apps />
+
 								<Typography variant='caption'>Games</Typography>
 							</Box>
 						</Box>
