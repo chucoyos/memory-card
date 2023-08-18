@@ -12,6 +12,7 @@ const MemoryCard = ({ theme, image }) => {
 				justifyContent: 'center',
 				alignItems: 'center',
 				padding: '2px',
+				width: '140px',
 				'&:hover': {
 					transform: 'scale(1.1)',
 					transition: 'all 0.2s ease-in-out',
@@ -22,9 +23,8 @@ const MemoryCard = ({ theme, image }) => {
 				src={image}
 				alt='pokemon card'
 				style={{
-					width: '100px',
-					height: '100px',
 					objectFit: 'contain',
+					width: '100%',
 				}}
 			/>
 		</Paper>

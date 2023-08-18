@@ -24,7 +24,7 @@ function App() {
 			.get('https://api.pokemontcg.io/v2/cards/')
 
 			.then((res) => {
-				setCards(res.data.data.splice(0, 12))
+				setCards(res.data.data.splice(0, 10))
 			})
 			.catch((err) => {
 				console.log(err)
@@ -100,7 +100,7 @@ function App() {
 					</Drawer>
 
 					<Container
-						maxWidth='sm'
+						maxWidth='md'
 						elevation={4}
 						sx={{
 							display: 'flex',
@@ -109,9 +109,9 @@ function App() {
 							gap: 2,
 							flexWrap: 'wrap',
 							auto: 'true',
-							padding: '64px',
+							padding: '8px',
 							backgroundColor: theme.surface.main,
-							marginTop: '15vh',
+							marginTop: '10vh',
 						}}
 					>
 						{cards.length === 0 ? <h1>Loading...</h1> : null}
@@ -125,8 +125,6 @@ function App() {
 								/>
 							)
 						})}
-
-						{/* <MemoryCard theme={theme} /> */}
 					</Container>
 				</Container>
 			</ThemeProvider>
