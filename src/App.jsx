@@ -143,18 +143,21 @@ function App() {
 							marginTop: '10vh',
 						}}
 					>
-						{deck.length === 0 ? <h1>Loading...</h1> : null}
-						{deck.map((deck) => {
-							return (
-								<MemoryCard
-									id={deck.id}
-									key={v4()}
-									image={`https://images.pokemontcg.io/dp3/${deck.id}.png`}
-									theme={theme}
-									sortCards={() => sortCards(deck.id)}
-								/>
-							)
-						})}
+						{deck.length === 0 || gameOver ? (
+							<h1>Game Over...</h1>
+						) : (
+							deck.map((deck) => {
+								return (
+									<MemoryCard
+										id={deck.id}
+										key={v4()}
+										image={`https://images.pokemontcg.io/dp3/${deck.id}.png`}
+										theme={theme}
+										sortCards={() => sortCards(deck.id)}
+									/>
+								)
+							})
+						)}
 					</Container>
 				</Container>
 			</ThemeProvider>
