@@ -10,6 +10,7 @@ import MemoryCard from './MemoryCard'
 import { useState, useEffect } from 'react'
 import { lightTheme, darkTheme } from './themes'
 import axios from 'axios'
+import { v4 } from 'uuid'
 
 function App() {
 	const [themeMode, setThemeMode] = useState(lightTheme)
@@ -140,7 +141,7 @@ function App() {
 							return (
 								<MemoryCard
 									id={deck.id}
-									key={deck.id * 25}
+									key={v4()}
 									image={`https://images.pokemontcg.io/dp3/${deck.id}.png`}
 									theme={theme}
 									sortCards={() => sortCards()}
