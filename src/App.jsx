@@ -131,7 +131,7 @@ function App() {
 							gap: 2,
 							flexWrap: 'wrap',
 							auto: 'true',
-							padding: '8px',
+							padding: '64px',
 							backgroundColor: theme.surface.main,
 							marginTop: '10vh',
 						}}
