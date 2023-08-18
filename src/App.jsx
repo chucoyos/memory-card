@@ -22,6 +22,8 @@ function App() {
 	const [cards, setCards] = useState([{}])
 	const [deck, setDeck] = useState([{}])
 	const [clickCount, setClickCount] = useState(0)
+	const [gameOver, setGameOver] = useState(false)
+
 	useEffect(() => {
 		axios
 			.get('https://api.pokemontcg.io/v2/cards/')
@@ -44,13 +46,18 @@ function App() {
 		)
 	}, [cards])
 
-	const sortCards = () => {
+	const [selectedCards, setSelectedCards] = useState([])
+	const sortCards = (id) => {
 		setDeck(
 			deck.sort(() => {
 				return 0.5 - Math.random()
 			})
 		)
-		setClickCount(clickCount + 1)
+		setClickCount(clickCount + 1),
+			!selectedCards.includes(id)
+				? setSelectedCards([...selectedCards, id])
+				: setGameOver(true)
+		gameOver ? console.log('game over') : console.log(selectedCards)
 	}
 
 	return (
@@ -144,7 +151,7 @@ function App() {
 									key={v4()}
 									image={`https://images.pokemontcg.io/dp3/${deck.id}.png`}
 									theme={theme}
-									sortCards={() => sortCards()}
+									sortCards={() => sortCards(deck.id)}
 								/>
 							)
 						})}
