@@ -21,26 +21,15 @@ function App() {
 	const [cards, setCards] = useState([{}])
 	useEffect(() => {
 		axios
-			.get('https://api.pokemontcg.io/v2/cards/dp3-1')
-			// .get('https://jsonplaceholder.typicode.com/posts/1')
+			.get('https://api.pokemontcg.io/v2/cards/')
 
 			.then((res) => {
-				setCards(res.data.data)
+				setCards(res.data.data.splice(0, 12))
 			})
 			.catch((err) => {
 				console.log(err)
 			})
 	}, [])
-
-	useEffect(() => {
-		if (cards.images) {
-			console.log(cards.images.small)
-		}
-		// console.log(cards.data)
-	}, [cards])
-
-	// console.log(cards[0].images.small[0])
-	// console.log(cards.name)
 
 	return (
 		<>
@@ -85,6 +74,7 @@ function App() {
 											border: `1px solid ${theme.outline.main}`,
 											'&:hover': {
 												paddingBottom: '4px',
+
 												backgroundColor: 'surface.variant',
 												rotate: '360deg',
 												transition: 'all 0.5s ease-in-out',
@@ -124,18 +114,19 @@ function App() {
 							marginTop: '15vh',
 						}}
 					>
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
-						<MemoryCard theme={theme} />
+						{cards.length === 0 ? <h1>Loading...</h1> : null}
+						{cards.map((card, index) => {
+							return (
+								<MemoryCard
+									key={card.id}
+									name={card.name}
+									image={`https://images.pokemontcg.io/dp3/${index + 1}.png`}
+									theme={theme}
+								/>
+							)
+						})}
+
+						{/* <MemoryCard theme={theme} /> */}
 					</Container>
 				</Container>
 			</ThemeProvider>

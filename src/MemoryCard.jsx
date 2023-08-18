@@ -2,7 +2,7 @@
 import './App.css'
 import { Paper } from '@mui/material'
 
-const MemoryCard = ({ theme }) => {
+const MemoryCard = ({ theme, image }) => {
 	return (
 		<Paper
 			elevation={1}
@@ -19,8 +19,13 @@ const MemoryCard = ({ theme }) => {
 			}}
 		>
 			<img
-				src='https://picsum.photos/id/13/70/120'
-				alt='DigitalCrafts logo'
+				src={image}
+				alt='pokemon card'
+				style={{
+					width: '100px',
+					height: '100px',
+					objectFit: 'contain',
+				}}
 			/>
 		</Paper>
 	)
