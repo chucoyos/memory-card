@@ -2,10 +2,11 @@
 import './App.css'
 import { Paper } from '@mui/material'
 
-const MemoryCard = ({ theme, image }) => {
+const MemoryCard = ({ theme, image, sortCards }) => {
 	return (
 		<Paper
 			elevation={1}
+			onClick={sortCards}
 			sx={{
 				backgroundColor: theme.outline.main,
 				display: 'flex',

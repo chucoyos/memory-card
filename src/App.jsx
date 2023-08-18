@@ -19,6 +19,8 @@ function App() {
 	const theme = themeMode
 
 	const [cards, setCards] = useState([{}])
+	const [deck, setDeck] = useState([{}])
+	const [clickCount, setClickCount] = useState(0)
 	useEffect(() => {
 		axios
 			.get('https://api.pokemontcg.io/v2/cards/')
@@ -30,6 +32,25 @@ function App() {
 				console.log(err)
 			})
 	}, [])
+
+	useEffect(() => {
+		let cardId = 1
+		setDeck(
+			cards.map((card) => {
+				card.id = cardId++
+				return card
+			})
+		)
+	}, [cards])
+
+	const sortCards = () => {
+		setDeck(
+			deck.sort(() => {
+				return 0.5 - Math.random()
+			})
+		)
+		setClickCount(clickCount + 1)
+	}
 
 	return (
 		<>
@@ -114,14 +135,15 @@ function App() {
 							marginTop: '10vh',
 						}}
 					>
-						{cards.length === 0 ? <h1>Loading...</h1> : null}
-						{cards.map((card, index) => {
+						{deck.length === 0 ? <h1>Loading...</h1> : null}
+						{deck.map((deck) => {
 							return (
 								<MemoryCard
-									key={card.id}
-									name={card.name}
-									image={`https://images.pokemontcg.io/dp3/${index + 1}.png`}
+									id={deck.id}
+									key={deck.id * 25}
+									image={`https://images.pokemontcg.io/dp3/${deck.id}.png`}
 									theme={theme}
+									sortCards={() => sortCards()}
 								/>
 							)
 						})}
