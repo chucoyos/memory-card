@@ -1,6 +1,7 @@
 import './App.css'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline, Drawer, Avatar, Typography } from '@mui/material'
 import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
@@ -27,7 +28,7 @@ function App() {
 
 	useEffect(() => {
 		axios
-			.get('https://api.pokemontcg.io/v2/cards/')
+			.get('https://api.pokemontcg.io/v2/cards/?q=set.id:dv1')
 			.then((res) => {
 				setCards(res.data.data.splice(0, 10))
 			})
@@ -52,6 +53,7 @@ function App() {
 				return 0.5 - Math.random()
 			})
 		)
+		console.log(deck)
 		setClickCount(clickCount + 1),
 			!selectedCards.includes(id)
 				? setSelectedCards([...selectedCards, id])
@@ -142,16 +144,44 @@ function App() {
 						}}
 					>
 						{deck === null || gameOver ? (
-							<h1>Game Over...</h1>
+							<Container
+								sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+									justifyContent: 'center',
+								}}
+							>
+								<Button
+									onClick={() => {
+										setGameOver(false)
+										setClickCount(0)
+										setSelectedCards([])
+									}}
+									sx={{
+										backgroundColor: theme.primary.main,
+										color: theme.primary.onPrimary,
+										'&:hover': {
+											color: theme.primary.main,
+											backgroundColor: theme.surface.main,
+											border: `1px solid ${theme.primary.main}`,
+										},
+									}}
+								>
+									Play Again
+								</Button>
+							</Container>
 						) : (
 							deck.map((deck) => {
 								return (
 									<MemoryCard
 										id={deck.id}
+										name={deck.name}
 										key={v4()}
-										image={`https://images.pokemontcg.io/dp3/${deck.id}.png`}
+										image={`https://images.pokemontcg.io/dv1/${deck.id}.png`}
 										theme={theme}
 										sortCards={() => sortCards(deck.id)}
+										artist={deck.artist}
 									/>
 								)
 							})

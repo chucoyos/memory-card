@@ -17,6 +17,9 @@ const lightTheme = createTheme({
 		primary: '#ebddff',
 		secondary: '#e9def8',
 	},
+	onContainer: {
+		primary: '#250059',
+	},
 	surface: {
 		main: '#fffbff',
 		variant: '#e7e0eb',
@@ -47,6 +50,9 @@ const darkTheme = createTheme({
 	container: {
 		primary: '#5727a7',
 		secondary: '#4b4358',
+	},
+	onContainer: {
+		primary: '#ebddff',
 	},
 	surface: {
 		main: '#1d1b1e',
