@@ -20,6 +20,7 @@ const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
 					padding: '2px',
 					width: '140px',
 					cursor: 'pointer',
+
 					'&:hover': {
 						transform: 'scale(1.1)',
 						transition: 'all 0.2s ease-in-out',

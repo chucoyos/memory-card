@@ -79,7 +79,7 @@ function App() {
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				<Breakpoint
-					small
+					medium
 					down
 				>
 					<Box marginBottom={8}>
@@ -134,7 +134,7 @@ function App() {
 					}}
 				>
 					<Breakpoint
-						medium
+						large
 						up
 					>
 						<Drawer variant='permanent'>
@@ -215,20 +215,32 @@ function App() {
 							padding: '32px',
 							backgroundColor: theme.surface.variant,
 							borderRadius: '16px',
+							'@media (max-width: 800px)': { padding: '8px' },
 						}}
 					>
-						<Container>
+						<Container
+							sx={{
+								'@media (max-width: 800px)': { padding: '0' },
+							}}
+						>
 							<Paper
 								sx={{
 									padding: '16px',
 									borderRadius: '16px',
 									bgcolor: theme.container.main,
+									'@media (max-width: 700px)': {
+										width: '100%',
+										padding: '16px',
+									},
 								}}
 							>
 								<Typography
 									variant='h4'
 									component='h1'
-									sx={{ color: theme.primary.main }}
+									sx={{
+										color: theme.primary.main,
+										'@media (max-width: 800px)': { fontSize: '24px' },
+									}}
 								>
 									Pokemon Memory Game
 								</Typography>
@@ -236,7 +248,10 @@ function App() {
 								<Typography
 									variant='h6'
 									component='h2'
-									sx={{ color: theme.secondary.main }}
+									sx={{
+										color: theme.secondary.main,
+										'@media (max-width: 800px)': { fontSize: '16px' },
+									}}
 								>
 									Try to beat your high score by clicking on each card only
 									once!
