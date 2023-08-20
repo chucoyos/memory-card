@@ -18,6 +18,7 @@ import { useState, useEffect } from 'react'
 import { lightTheme, darkTheme } from './themes'
 import axios from 'axios'
 import { v4 } from 'uuid'
+import { Breakpoint } from 'react-socks'
 
 function App() {
 	const [themeMode, setThemeMode] = useState(lightTheme)
@@ -73,76 +74,88 @@ function App() {
 		<>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				<Container>
-					<Drawer variant='permanent'>
-						<Box
-							width={70}
-							sx={{
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-								justifyContent: 'center',
-								gap: 2,
-								marginTop: 2,
-							}}
-						>
+				<Container
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<Breakpoint
+						medium
+						up
+					>
+						<Drawer variant='permanent'>
 							<Box
+								width={70}
 								sx={{
 									display: 'flex',
 									flexDirection: 'column',
 									alignItems: 'center',
+									justifyContent: 'center',
+									gap: 2,
+									marginTop: 2,
 								}}
 							>
-								<Apps />
+								<Box
+									sx={{
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'center',
+									}}
+								>
+									<Apps />
 
-								<Typography variant='caption'>Games</Typography>
-							</Box>
-							<Box onClick={toggleTheme}>
-								{theme === lightTheme ? (
-									<Avatar
-										animation='true'
-										sx={{
-											backgroundColor: theme.background.main,
-											border: `1px solid ${theme.outline.main}`,
-											color: theme.background.onBackground,
-											'&:hover': {
-												paddingBottom: '4px',
-												backgroundColor: 'background.main',
-												rotate: '360deg',
-												transition: 'all 0.5s ease-in-out',
-											},
-										}}
-									>
-										<LightModeIconOutlined fontSize='small' />
-									</Avatar>
-								) : (
-									<Avatar
-										sx={{
-											backgroundColor: theme.background.main,
-											color: theme.background.onBackground,
-											border: `1px solid ${theme.outline.main}`,
-											'&:hover': {
-												paddingBottom: '4px',
+									<Typography variant='caption'>Games</Typography>
+								</Box>
+								<Box onClick={toggleTheme}>
+									{theme === lightTheme ? (
+										<Avatar
+											animation='true'
+											sx={{
+												backgroundColor: theme.background.main,
+												border: `1px solid ${theme.outline.main}`,
+												color: theme.background.onBackground,
+												'&:hover': {
+													paddingBottom: '4px',
+													backgroundColor: 'background.main',
+													rotate: '360deg',
+													transition: 'all 0.5s ease-in-out',
+												},
+											}}
+										>
+											<LightModeIconOutlined fontSize='small' />
+										</Avatar>
+									) : (
+										<Avatar
+											sx={{
+												backgroundColor: theme.background.main,
+												color: theme.background.onBackground,
+												border: `1px solid ${theme.outline.main}`,
+												'&:hover': {
+													paddingBottom: '4px',
 
-												backgroundColor: 'surface.variant',
-												rotate: '360deg',
-												transition: 'all 0.5s ease-in-out',
-											},
-										}}
-									>
-										<DarkModeIconOutlined fontSize='small' />
-									</Avatar>
-								)}
+													backgroundColor: 'surface.variant',
+													rotate: '360deg',
+													transition: 'all 0.5s ease-in-out',
+												},
+											}}
+										>
+											<DarkModeIconOutlined fontSize='small' />
+										</Avatar>
+									)}
+								</Box>
 							</Box>
-						</Box>
-					</Drawer>
+						</Drawer>
+					</Breakpoint>
 
 					<Container
 						maxWidth='lg'
 						sx={{
 							marginTop: '24px',
 							marginBottom: '24px',
-							marginLeft: '32px',
+							marginLeft: '0',
 							display: 'flex',
 							justifyContent: 'center',
 							alignItems: 'center',
