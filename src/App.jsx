@@ -9,24 +9,20 @@ import {
 	Typography,
 	Chip,
 	Paper,
-	AppBar,
-	Toolbar,
-	IconButton,
 } from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
 import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
 import DarkModeIconOutlined from '@mui/icons-material/DarkModeOutlined'
 import Apps from '@mui/icons-material/Apps'
 import MemoryCard from './MemoryCard'
+import NavBar from './components/AppBar'
 import { useState, useEffect } from 'react'
-import { lightTheme, darkTheme } from './themes'
+import { lightTheme, darkTheme } from './utils/themes'
 import axios from 'axios'
 import { v4 } from 'uuid'
 import { Breakpoint } from 'react-socks'
 
 function App() {
 	const [themeMode, setThemeMode] = useState(lightTheme)
-
 	const theme = themeMode
 
 	const [cards, setCards] = useState([{}])
@@ -78,7 +74,11 @@ function App() {
 		<>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				<Breakpoint
+				<NavBar
+					theme={theme}
+					toggleTheme={toggleTheme}
+				/>
+				{/* <Breakpoint
 					medium
 					down
 				>
@@ -124,7 +124,7 @@ function App() {
 							</Toolbar>
 						</AppBar>
 					</Box>
-				</Breakpoint>
+				</Breakpoint> */}
 				<Container
 					sx={{
 						display: 'flex',
