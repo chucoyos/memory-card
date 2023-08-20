@@ -5,7 +5,7 @@ import { Paper, Typography, Box } from '@mui/material'
 const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
 	return (
 		<Paper
-			elevation={1}
+			elevation={4}
 			onClick={sortCards}
 			sx={{
 				backgroundColor: theme.container.primary,

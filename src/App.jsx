@@ -1,9 +1,15 @@
 import './App.css'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import { ThemeProvider } from '@mui/material/styles'
-import { CssBaseline, Drawer, Avatar, Typography, Chip } from '@mui/material'
+import {
+	CssBaseline,
+	Drawer,
+	Avatar,
+	Typography,
+	Chip,
+	Paper,
+} from '@mui/material'
 import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
 import DarkModeIconOutlined from '@mui/icons-material/DarkModeOutlined'
 import Apps from '@mui/icons-material/Apps'
@@ -133,48 +139,57 @@ function App() {
 
 					<Container
 						maxWidth='lg'
-						elevation={4}
-						borderRadius={8}
 						sx={{
+							marginTop: '24px',
+							marginBottom: '24px',
+							marginLeft: 'auto',
 							display: 'flex',
 							justifyContent: 'center',
 							alignItems: 'center',
 							gap: 2,
 							flexWrap: 'wrap',
-							auto: 'true',
 							padding: '32px',
-							backgroundColor: theme.surface.main,
-							marginTop: '8vh',
+							backgroundColor: theme.surface.variant,
+							borderRadius: '16px',
 						}}
 					>
 						<Container>
-							<Typography
-								variant='h2'
-								component='h1'
-								sx={{ color: theme.primary.main }}
-							>
-								Pokemon Memory Game
-							</Typography>
-							<Typography
-								variant='h5'
-								component='h2'
-								sx={{ color: theme.secondary.main }}
-							>
-								Try to beat your high score by clicking on each card only once!
-							</Typography>
-							<Chip
-								label={`Score: ${score}`}
+							<Paper
 								sx={{
-									marginRight: '8px',
-									bgcolor: theme.primary.main,
-									color: theme.primary.onPrimary,
+									padding: '16px',
+									borderRadius: '16px',
+									bgcolor: theme.container.main,
 								}}
-							/>
-							<Chip
-								label={`Max Score: ${maxScore}`}
-								variant='outlined'
-								sx={{}}
-							/>
+							>
+								<Typography
+									variant='h4'
+									component='h1'
+									sx={{ color: theme.primary.main }}
+								>
+									Pokemon Memory Game
+								</Typography>
+
+								<Typography
+									variant='h6'
+									component='h2'
+									sx={{ color: theme.secondary.main }}
+								>
+									Try to beat your high score by clicking on each card only
+									once!
+								</Typography>
+								<Chip
+									label={`Score: ${score}`}
+									sx={{
+										marginRight: '8px',
+										bgcolor: theme.primary.main,
+										color: theme.primary.onPrimary,
+									}}
+								/>
+								<Chip
+									label={`Max Score: ${maxScore}`}
+									variant='outlined'
+								/>
+							</Paper>
 						</Container>
 						{deck === null || gameOver ? (
 							<Container
@@ -185,7 +200,9 @@ function App() {
 									justifyContent: 'center',
 								}}
 							>
-								<Button
+								<Chip
+									clickable
+									label={`Tray Again!`}
 									onClick={() => {
 										setGameOver(false)
 										setScore(0)
@@ -194,15 +211,14 @@ function App() {
 									sx={{
 										backgroundColor: theme.primary.main,
 										color: theme.primary.onPrimary,
+										fontWeight: 'bold',
+										padding: '16px 24px',
 										'&:hover': {
 											color: theme.primary.main,
 											backgroundColor: theme.surface.main,
-											border: `1px solid ${theme.primary.main}`,
 										},
 									}}
-								>
-									Play Again
-								</Button>
+								/>
 							</Container>
 						) : (
 							deck.map((deck) => {
