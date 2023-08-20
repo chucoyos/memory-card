@@ -9,6 +9,7 @@ const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
 			onClick={sortCards}
 			sx={{
 				backgroundColor: theme.container.primary,
+				color: theme.onContainer.primary,
 				display: 'flex',
 				flexDirection: 'column',
 				padding: '2px',

@@ -3,7 +3,7 @@ import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { ThemeProvider } from '@mui/material/styles'
-import { CssBaseline, Drawer, Avatar, Typography } from '@mui/material'
+import { CssBaseline, Drawer, Avatar, Typography, Chip } from '@mui/material'
 import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
 import DarkModeIconOutlined from '@mui/icons-material/DarkModeOutlined'
 import Apps from '@mui/icons-material/Apps'
@@ -15,22 +15,25 @@ import { v4 } from 'uuid'
 
 function App() {
 	const [themeMode, setThemeMode] = useState(lightTheme)
-	const toggleTheme = () => {
-		setThemeMode(themeMode === lightTheme ? darkTheme : lightTheme)
-	}
+
 	const theme = themeMode
 
 	const [cards, setCards] = useState([{}])
 	const [deck, setDeck] = useState([{}])
-	const [clickCount, setClickCount] = useState(0)
+	const [score, setScore] = useState(0)
+	const [maxScore, setMaxScore] = useState(0)
 	const [gameOver, setGameOver] = useState(false)
 	const [selectedCards, setSelectedCards] = useState([])
+
+	const toggleTheme = () => {
+		setThemeMode(themeMode === lightTheme ? darkTheme : lightTheme)
+	}
 
 	useEffect(() => {
 		axios
 			.get('https://api.pokemontcg.io/v2/cards/?q=set.id:dv1')
 			.then((res) => {
-				setCards(res.data.data.splice(0, 10))
+				setCards(res.data.data.splice(0, 14))
 			})
 			.catch((err) => {
 				console.log(err)
@@ -53,11 +56,11 @@ function App() {
 				return 0.5 - Math.random()
 			})
 		)
-		console.log(deck)
-		setClickCount(clickCount + 1),
-			!selectedCards.includes(id)
-				? setSelectedCards([...selectedCards, id])
-				: setGameOver(true)
+
+		!selectedCards.includes(id)
+			? setSelectedCards([...selectedCards, id]) & setScore(score + 1)
+			: setGameOver(true)
+		score > maxScore ? setMaxScore(score) : setMaxScore(maxScore)
 	}
 
 	return (
@@ -77,6 +80,17 @@ function App() {
 								marginTop: 2,
 							}}
 						>
+							<Box
+								sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									alignItems: 'center',
+								}}
+							>
+								<Apps />
+
+								<Typography variant='caption'>Games</Typography>
+							</Box>
 							<Box onClick={toggleTheme}>
 								{theme === lightTheme ? (
 									<Avatar
@@ -114,23 +128,13 @@ function App() {
 									</Avatar>
 								)}
 							</Box>
-							<Box
-								sx={{
-									display: 'flex',
-									flexDirection: 'column',
-									alignItems: 'center',
-								}}
-							>
-								<Apps />
-
-								<Typography variant='caption'>Games</Typography>
-							</Box>
 						</Box>
 					</Drawer>
 
 					<Container
-						maxWidth='md'
+						maxWidth='lg'
 						elevation={4}
+						borderRadius={8}
 						sx={{
 							display: 'flex',
 							justifyContent: 'center',
@@ -138,11 +142,40 @@ function App() {
 							gap: 2,
 							flexWrap: 'wrap',
 							auto: 'true',
-							padding: '64px',
+							padding: '32px',
 							backgroundColor: theme.surface.main,
-							marginTop: '10vh',
+							marginTop: '8vh',
 						}}
 					>
+						<Container>
+							<Typography
+								variant='h2'
+								component='h1'
+								sx={{ color: theme.primary.main }}
+							>
+								Pokemon Memory Game
+							</Typography>
+							<Typography
+								variant='h5'
+								component='h2'
+								sx={{ color: theme.secondary.main }}
+							>
+								Try to beat your high score by clicking on each card only once!
+							</Typography>
+							<Chip
+								label={`Score: ${score}`}
+								sx={{
+									marginRight: '8px',
+									bgcolor: theme.primary.main,
+									color: theme.primary.onPrimary,
+								}}
+							/>
+							<Chip
+								label={`Max Score: ${maxScore}`}
+								variant='outlined'
+								sx={{}}
+							/>
+						</Container>
 						{deck === null || gameOver ? (
 							<Container
 								sx={{
@@ -155,7 +188,7 @@ function App() {
 								<Button
 									onClick={() => {
 										setGameOver(false)
-										setClickCount(0)
+										setScore(0)
 										setSelectedCards([])
 									}}
 									sx={{
