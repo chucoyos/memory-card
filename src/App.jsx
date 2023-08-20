@@ -76,7 +76,7 @@ function App() {
 				<Container>
 					<Drawer variant='permanent'>
 						<Box
-							width={60}
+							width={70}
 							sx={{
 								display: 'flex',
 								flexDirection: 'column',
@@ -142,7 +142,7 @@ function App() {
 						sx={{
 							marginTop: '24px',
 							marginBottom: '24px',
-							marginLeft: 'auto',
+							marginLeft: '32px',
 							display: 'flex',
 							justifyContent: 'center',
 							alignItems: 'center',
