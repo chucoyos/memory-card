@@ -2,7 +2,7 @@
 import './App.css'
 import { Paper, Typography, Box, Slide } from '@mui/material'
 
-const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
+const MemoryCard = ({ theme, image, dealCards, name, artist }) => {
 	return (
 		<Slide
 			in={true}
@@ -11,7 +11,7 @@ const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
 		>
 			<Paper
 				elevation={4}
-				onClick={() => sortCards()}
+				onClick={dealCards}
 				sx={{
 					backgroundColor: theme.container.primary,
 					color: theme.onContainer.primary,

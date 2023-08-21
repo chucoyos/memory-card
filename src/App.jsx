@@ -42,30 +42,37 @@ function App() {
 			.then((res) => {
 				setCards(res.data.data.splice(0, 14))
 			})
+			.then(() => {
+				let cardId = 1
+				setDeck(
+					cards.map((card) => ({
+						...card,
+						id: cardId++,
+						image: `https://images.pokemontcg.io/dv1/${card.id}.png`,
+					}))
+				)
+			})
 			.catch((err) => {
 				console.log(err)
 			})
-	}, [])
-
-	useEffect(() => {
-		let cardId = 1
-		setDeck(
-			cards.map((card) => {
-				card.id = cardId++
-				return card
-			})
-		)
 	}, [cards])
-	useEffect(() => {
-		score >= maxScore && setMaxScore(score)
-	}, [score, maxScore])
 
-	const sortCards = (id) => {
+	useEffect(() => {
 		setDeck(
 			deck.sort(() => {
 				return 0.5 - Math.random()
 			})
 		)
+	}, [deck])
+
+	useEffect(() => {
+		score >= maxScore && setMaxScore(score)
+	}, [score, maxScore])
+
+	const dealCards = (id) => {
+		deck.sort(() => {
+			return 0.5 - Math.random()
+		})
 		!selectedCards.includes(id)
 			? setSelectedCards([...selectedCards, id]) & setScore(score + 1)
 			: setGameOver(true)
@@ -227,7 +234,7 @@ function App() {
 							</Paper>
 						</Container>
 						{/* Game Over container */}
-						{deck === null || gameOver ? (
+						{deck.length === 0 || gameOver ? (
 							<Container
 								sx={{
 									display: 'flex',
@@ -263,9 +270,9 @@ function App() {
 										id={deck.id}
 										name={deck.name}
 										key={v4()}
-										image={`https://images.pokemontcg.io/dv1/${deck.id}.png`}
+										image={deck.image}
 										theme={theme}
-										sortCards={() => sortCards(deck.id)}
+										dealCards={() => dealCards(deck.id)}
 										artist={deck.artist}
 									/>
 								)
