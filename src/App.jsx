@@ -52,7 +52,7 @@ function App() {
 		setDeck(
 			cards.map((card) => ({
 				...card,
-				id: cardId++,
+				cardId: cardId++,
 				image: `https://images.pokemontcg.io/dv1/${cardId}.png`,
 			}))
 		)
