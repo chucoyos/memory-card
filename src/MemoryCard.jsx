@@ -21,7 +21,7 @@ const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
 					width: '140px',
 					cursor: 'pointer',
 					'@media (max-width: 800px)': {
-						width: '60px',
+						width: '80px',
 						padding: '0',
 					},
 
