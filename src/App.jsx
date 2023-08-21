@@ -78,53 +78,7 @@ function App() {
 					theme={theme}
 					toggleTheme={toggleTheme}
 				/>
-				{/* <Breakpoint
-					medium
-					down
-				>
-					<Box marginBottom={8}>
-						<AppBar
-							sx={{
-								backgroundColor: theme.primary.main,
-								color: theme.primary.onPrimary,
-							}}
-						>
-							<Toolbar>
-								<IconButton
-									size='large'
-									edge='start'
-									color='inherit'
-									aria-label='menu'
-									sx={{ mr: 2 }}
-								>
-									<MenuIcon />
-								</IconButton>
-								{theme === lightTheme ? (
-									<IconButton
-										size='large'
-										color='inherit'
-										aria-label='dark mode'
-										sx={{ mr: 2 }}
-										onClick={toggleTheme}
-										edge='end'
-									>
-										<LightModeIconOutlined fontSize='small' />
-									</IconButton>
-								) : (
-									<IconButton
-										size='large'
-										color='inherit'
-										aria-label='dark mode'
-										sx={{ mr: 2 }}
-										onClick={toggleTheme}
-									>
-										<DarkModeIconOutlined fontSize='small' />
-									</IconButton>
-								)}
-							</Toolbar>
-						</AppBar>
-					</Box>
-				</Breakpoint> */}
+
 				<Container
 					sx={{
 						display: 'flex',
