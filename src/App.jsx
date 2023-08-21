@@ -78,7 +78,7 @@ function App() {
 					theme={theme}
 					toggleTheme={toggleTheme}
 				/>
-
+				{/* Main Container */}
 				<Container
 					sx={{
 						display: 'flex',
@@ -154,7 +154,7 @@ function App() {
 							</Box>
 						</Drawer>
 					</Breakpoint>
-
+					{/* Game container */}
 					<Container
 						maxWidth='lg'
 						sx={{
@@ -172,6 +172,7 @@ function App() {
 							'@media (max-width: 800px)': { padding: '8px' },
 						}}
 					>
+						{/* Header container */}
 						<Container
 							sx={{
 								'@media (max-width: 800px)': { padding: '0' },
@@ -224,6 +225,7 @@ function App() {
 								/>
 							</Paper>
 						</Container>
+						{/* Game Over container */}
 						{deck === null || gameOver ? (
 							<Container
 								sx={{

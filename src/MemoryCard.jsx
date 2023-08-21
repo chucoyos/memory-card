@@ -20,6 +20,10 @@ const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
 					padding: '2px',
 					width: '140px',
 					cursor: 'pointer',
+					'@media (max-width: 800px)': {
+						width: '60px',
+						padding: '0',
+					},
 
 					'&:hover': {
 						transform: 'scale(1.1)',
@@ -37,12 +41,16 @@ const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
 						}}
 					/>
 				</Box>
+
 				<Box
 					sx={{
 						display: 'flex',
 						flexDirection: 'column',
 						justifyContent: 'start',
-						padding: '4px',
+						padding: '2px',
+						'@media (max-width: 800px)': {
+							display: 'none',
+						},
 					}}
 				>
 					<Typography
