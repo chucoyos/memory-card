@@ -2,14 +2,18 @@
 
 ## This is a memory card React game for the Odin Project
 
+## Student goals
+
+reaffirm useEffect hook best practices and example use cases
+
 ## Libraries used
 
 - React
 - Material UI
+- Material UI Icons
 - Axios
 - Uuid
 - React Socks
-- Material UI Icons
 
 ## How to play
 
