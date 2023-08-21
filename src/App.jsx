@@ -56,6 +56,9 @@ function App() {
 			})
 		)
 	}, [cards])
+	useEffect(() => {
+		score >= maxScore && setMaxScore(score)
+	}, [score, maxScore])
 
 	const sortCards = (id) => {
 		setDeck(
@@ -63,11 +66,9 @@ function App() {
 				return 0.5 - Math.random()
 			})
 		)
-
 		!selectedCards.includes(id)
 			? setSelectedCards([...selectedCards, id]) & setScore(score + 1)
 			: setGameOver(true)
-		score > maxScore ? setMaxScore(score) : setMaxScore(maxScore)
 	}
 
 	return (

@@ -11,7 +11,7 @@ const MemoryCard = ({ theme, image, sortCards, name, artist }) => {
 		>
 			<Paper
 				elevation={4}
-				onClick={sortCards}
+				onClick={() => sortCards()}
 				sx={{
 					backgroundColor: theme.container.primary,
 					color: theme.onContainer.primary,
