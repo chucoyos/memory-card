@@ -42,28 +42,21 @@ function App() {
 			.then((res) => {
 				setCards(res.data.data.splice(0, 14))
 			})
-			.then(() => {
-				let cardId = 1
-				setDeck(
-					cards.map((card) => ({
-						...card,
-						id: cardId++,
-						image: `https://images.pokemontcg.io/dv1/${card.id}.png`,
-					}))
-				)
-			})
 			.catch((err) => {
 				console.log(err)
 			})
-	}, [cards])
+	}, [])
 
 	useEffect(() => {
+		let cardId = 1
 		setDeck(
-			deck.sort(() => {
-				return 0.5 - Math.random()
-			})
+			cards.map((card) => ({
+				...card,
+				id: cardId++,
+				image: `https://images.pokemontcg.io/dv1/${cardId}.png`,
+			}))
 		)
-	}, [deck])
+	}, [cards])
 
 	useEffect(() => {
 		score >= maxScore && setMaxScore(score)
