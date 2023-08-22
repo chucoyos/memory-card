@@ -9,6 +9,7 @@ import {
 	Typography,
 	Chip,
 	Paper,
+	CircularProgress,
 } from '@mui/material'
 import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
 import DarkModeIconOutlined from '@mui/icons-material/DarkModeOutlined'
@@ -227,7 +228,22 @@ function App() {
 							</Paper>
 						</Container>
 						{/* Game Over container */}
-						{deck.length === 0 || gameOver ? (
+						{deck.length == 1 && (
+							<Box
+								sx={{
+									display: 'flex',
+									gap: 8,
+								}}
+							>
+								<CircularProgress color='primary' />
+								<CircularProgress color='secondary' />
+								<CircularProgress color='secondary' />
+								<CircularProgress color='primary' />
+								<CircularProgress color='secondary' />
+								<CircularProgress color='secondary' />
+							</Box>
+						)}
+						{gameOver ? (
 							<Container
 								sx={{
 									display: 'flex',
