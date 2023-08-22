@@ -13,7 +13,7 @@ const CardSkeleton = () => {
 		>
 			<Box
 				sx={{
-					'@media (min-width: 800px)': {
+					'@media (min-width: 1250px)': {
 						display: 'none',
 					},
 				}}
@@ -22,15 +22,27 @@ const CardSkeleton = () => {
 			</Box>
 			<Box
 				sx={{
-					'@media (max-width: 800px)': {
+					display: 'flex',
+					flexDirection: 'column',
+					backgroundColor: '#f5f5f5',
+					maxWidth: '135px',
+					'@media (max-width: 1250px)': {
 						display: 'none',
 					},
 				}}
 			>
 				<Skeleton
+					variant='circular'
+					width={30}
+					height={30}
+					style={{
+						marginBottom: 6,
+					}}
+				/>
+				<Skeleton
 					animation='wave'
 					variant='rectangular'
-					width={140}
+					width='135px'
 					height={180}
 					style={{
 						marginBottom: 6,
@@ -40,7 +52,7 @@ const CardSkeleton = () => {
 				<Skeleton
 					animation='wave'
 					height={10}
-					width='80%'
+					width='110px'
 				/>
 				<Skeleton
 					animation='wave'

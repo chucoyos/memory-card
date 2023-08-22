@@ -229,42 +229,18 @@ function App() {
 						</Container>
 						{/* Game Over container */}
 						{deck.length == 1 && (
-							<Box
+							<Container
 								sx={{
 									display: 'flex',
-									gap: 2,
+									maxWidth: '100%',
+									justifyContent: 'center',
 								}}
 							>
 								<CardSkeleton />
 								<CardSkeleton />
 								<CardSkeleton />
 								<CardSkeleton />
-								{/* <CardSkeleton /> */}
-								{/* <CardSkeleton /> */}
-
-								{/* <CircularProgress
-									sx={{
-										color: theme.primary.main,
-									}}
-								/>
-								<CircularProgress
-									sx={{
-										color: theme.primary.main,
-									}}
-								/>
-								<CircularProgress
-									sx={{
-										color: theme.error.main,
-									}}
-								/>
-								<CircularProgress
-									sx={{
-										color: theme.error.main,
-									}}
-								/>
-								<CircularProgress color='success' />
-								<CircularProgress color='success' /> */}
-							</Box>
+							</Container>
 						)}
 						{gameOver ? (
 							<Container
