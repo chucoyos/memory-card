@@ -9,13 +9,13 @@ import {
 	Typography,
 	Chip,
 	Paper,
-	CircularProgress,
 } from '@mui/material'
 import LightModeIconOutlined from '@mui/icons-material/LightModeOutlined'
 import DarkModeIconOutlined from '@mui/icons-material/DarkModeOutlined'
 import Apps from '@mui/icons-material/Apps'
 import MemoryCard from './MemoryCard'
 import NavBar from './components/AppBar'
+import CardSkeleton from './components/CardSkeleton'
 import { useState, useEffect } from 'react'
 import { lightTheme, darkTheme } from './utils/themes'
 import axios from 'axios'
@@ -232,15 +232,38 @@ function App() {
 							<Box
 								sx={{
 									display: 'flex',
-									gap: 8,
+									gap: 2,
 								}}
 							>
-								<CircularProgress color='primary' />
-								<CircularProgress color='secondary' />
-								<CircularProgress color='secondary' />
-								<CircularProgress color='primary' />
-								<CircularProgress color='secondary' />
-								<CircularProgress color='secondary' />
+								<CardSkeleton />
+								<CardSkeleton />
+								<CardSkeleton />
+								<CardSkeleton />
+								{/* <CardSkeleton /> */}
+								{/* <CardSkeleton /> */}
+
+								{/* <CircularProgress
+									sx={{
+										color: theme.primary.main,
+									}}
+								/>
+								<CircularProgress
+									sx={{
+										color: theme.primary.main,
+									}}
+								/>
+								<CircularProgress
+									sx={{
+										color: theme.error.main,
+									}}
+								/>
+								<CircularProgress
+									sx={{
+										color: theme.error.main,
+									}}
+								/>
+								<CircularProgress color='success' />
+								<CircularProgress color='success' /> */}
 							</Box>
 						)}
 						{gameOver ? (
