@@ -36,7 +36,7 @@ const CardSkeleton = () => {
 					width={30}
 					height={30}
 					style={{
-						marginBottom: 6,
+						margin: 6,
 					}}
 				/>
 				<Skeleton

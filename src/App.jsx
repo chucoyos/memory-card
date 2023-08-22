@@ -227,22 +227,37 @@ function App() {
 								/>
 							</Paper>
 						</Container>
-						{/* Game Over container */}
+						{/* Loaders... */}
 						{deck.length == 1 && (
-							<Container
-								sx={{
-									display: 'flex',
-									maxWidth: '100%',
-									justifyContent: 'center',
-								}}
-							>
-								<CardSkeleton />
-								<CardSkeleton />
-								<CardSkeleton />
-								<CardSkeleton />
-							</Container>
+							<>
+								<Container
+									sx={{
+										display: 'flex',
+										maxWidth: '100%',
+										justifyContent: 'center',
+										marginBottom: '32px',
+									}}
+								>
+									<CardSkeleton />
+									<CardSkeleton />
+									<CardSkeleton />
+									<CardSkeleton />
+								</Container>
+								<Container
+									sx={{
+										display: 'flex',
+										maxWidth: '100%',
+										justifyContent: 'center',
+									}}
+								>
+									<CardSkeleton />
+									<CardSkeleton />
+									<CardSkeleton />
+									<CardSkeleton />
+								</Container>
+							</>
 						)}
-						{gameOver ? (
+						{gameOver && (
 							<Container
 								sx={{
 									display: 'flex',
@@ -271,7 +286,9 @@ function App() {
 									}}
 								/>
 							</Container>
-						) : (
+						)}
+						{!gameOver &&
+							deck.length > 1 &&
 							deck.map((deck) => {
 								return (
 									<MemoryCard
@@ -284,8 +301,7 @@ function App() {
 										artist={deck.artist}
 									/>
 								)
-							})
-						)}
+							})}
 					</Container>
 				</Container>
 			</ThemeProvider>
